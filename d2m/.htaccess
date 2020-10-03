@@ -1,0 +1,17 @@
+RewriteEngine On
+RewriteRule ^(application|system|\.svn) index.php/$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php/$0 [PT,L]
+php_value post_max_size 52428800
+ # 50MB
+php_value upload_max_filesize 52428800 
+# 50MB
+php_value max_execution_time 300
+ # 5 minutes
+
+php_flag display_startup_errors on
+php_flag display_errors on
+php_flag html_errors on
+php_flag log_errors on
+php_value error_log /var/www/html/mycloudsupport/error.log
